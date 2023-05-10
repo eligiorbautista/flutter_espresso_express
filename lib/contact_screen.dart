@@ -80,6 +80,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Form(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             TextFormField(
                               decoration: const InputDecoration(
@@ -120,12 +121,19 @@ class _ContactScreenState extends State<ContactScreen> {
                                     color: Color.fromARGB(255, 38, 36, 27),
                                   )),
                                   filled: true),
-                              minLines: 5,
-                              maxLines: 5,
+                              minLines: 4,
+                              maxLines: 4,
                             ),
                             const SizedBox(
                               height: 10,
                             ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 174, 91, 8)),
+                              child: const Text("Send Message"),
+                            )
                           ],
                         ),
                       ),
