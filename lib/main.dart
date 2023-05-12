@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'package:flutter/services.dart';
+import 'pages/home.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
-  runApp(const PortfolioApp());
+  runApp(const EspressoExpress());
 }
 
-class PortfolioApp extends StatelessWidget {
-  const PortfolioApp({super.key});
+class EspressoExpress extends StatelessWidget {
+  const EspressoExpress({super.key});
 
   @override
   Widget build(BuildContext context) {
