@@ -58,10 +58,9 @@ class _WelcomePageState extends State<WelcomePage> {
                         elevation: 5,
                       ),
                       child: const Text(
-                        "Continue as customer",
+                        "Let's get caffeinated!",
                         style: TextStyle(
-                          fontSize: 18,
-                        ),
+                            fontSize: 18, fontStyle: FontStyle.italic),
                       ),
                     ),
                   ),
@@ -72,25 +71,25 @@ class _WelcomePageState extends State<WelcomePage> {
                     padding: const EdgeInsets.all(5),
                     width: 400,
                     height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MainNavigation()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 121, 61, 5),
-                        shadowColor: Colors.black,
-                        elevation: 5,
-                      ),
-                      child: const Text(
-                        "Continue as admin",
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
+                    // child: ElevatedButton(
+                    //   onPressed: () {
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: (context) => const MainNavigation()));
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: const Color.fromARGB(255, 121, 61, 5),
+                    //     shadowColor: Colors.black,
+                    //     elevation: 5,
+                    //   ),
+                    //   child: const Text(
+                    //     "Continue as admin",
+                    //     style: TextStyle(
+                    //       fontSize: 18,
+                    //     ),
+                    //   ),
+                    // ),
                   )
                 ]),
           ]),
