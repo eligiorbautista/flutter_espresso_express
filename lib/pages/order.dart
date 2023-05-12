@@ -1,5 +1,6 @@
-import "contact.dart";
 import "package:flutter/material.dart";
+import 'package:mailer/smtp_server.dart';
+import 'package:mailer/mailer.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -9,6 +10,35 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  Future sendEmailMessage(
+      int tableNo, String orderList, double totalAmount) async {
+    String emailUser = "kape.espresso.express@gmail.com";
+    String emailPassword = "hccetavpsrjxbtcc";
+
+    final smtpServer = gmail(emailUser, emailPassword);
+    final emailMessage = Message()
+      ..from = Address(emailUser, "EspressoExpress New Order!")
+      ..recipients.add(emailUser)
+      ..ccRecipients.add(emailUser)
+      ..bccRecipients.add(emailUser)
+      ..subject = "Order from table no. $tableNo!"
+      ..text = ""
+      ..html = """
+<b>TABLE NO:</b> $tableNo<br><br>
+
+<b>ORDER LIST:</b>
+<br>$orderList<br><br>
+
+<b>TOTAL AMOUNT:</b> 
+<br>₱$totalAmount<br><br>
+
+<b>DATE & TIME:</b>
+<br>${DateTime.now()}
+
+""";
+    final sendEmail = await send(emailMessage, smtpServer);
+  }
+
   final List<String> productList = [
     "Espresso",
     "Americano",
@@ -44,9 +74,11 @@ class _OrderPageState extends State<OrderPage> {
   };
 
   List orderList = [];
-
+  final orderFormKey = GlobalKey<FormState>();
+  final tableNoController = TextEditingController();
   final qtyController = TextEditingController();
   final paymentController = TextEditingController();
+  double totalAmount = 0.0;
   @override
   Widget build(BuildContext context) {
     String productValue = productList.first;
@@ -82,6 +114,7 @@ class _OrderPageState extends State<OrderPage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Form(
+                          key: orderFormKey,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -100,7 +133,13 @@ class _OrderPageState extends State<OrderPage> {
                                 height: 5,
                               ),
                               TextFormField(
-                                controller: qtyController,
+                                validator: (value) {
+                                  if (value == null || value!.isEmpty) {
+                                    return "*Required";
+                                  }
+                                  return null;
+                                },
+                                controller: tableNoController,
                                 decoration: const InputDecoration(
                                     hintText: "Table no.",
                                     fillColor: Colors.white,
@@ -203,13 +242,16 @@ class _OrderPageState extends State<OrderPage> {
                                         if (qtyController.text != "" ||
                                             qtyController.text.isNotEmpty) {
                                           var productQty =
-                                              "$productValue - ${qtyController.text}x";
+                                              "$productValue - ${qtyController.text}x - ₱${int.parse(qtyController.text) * productPriceMap[productValue]}";
                                           orderList.add(productQty);
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                                   content: Text(
                                                       "$productValue (${qtyController.text}x) has been added to your order.")));
                                           setState(() {
+                                            totalAmount += (int.parse(
+                                                    qtyController.text) *
+                                                productPriceMap[productValue]);
                                             productValue = productList.first;
                                             qtyController.clear();
                                           });
@@ -243,14 +285,14 @@ class _OrderPageState extends State<OrderPage> {
                                 height: 5,
                               ),
                               Card(
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                       side: BorderSide(color: Colors.black)),
                                   color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Text(
                                       orderList.join("\n").toString(),
-                                      style: TextStyle(fontSize: 16),
+                                      style: const TextStyle(fontSize: 16),
                                     ),
                                   )),
                               const SizedBox(
@@ -261,36 +303,62 @@ class _OrderPageState extends State<OrderPage> {
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                              backgroundColor: Color.fromARGB(
-                                                  247, 232, 178, 52),
-                                              content: SingleChildScrollView(
-                                                child: Column(
-                                                  children: const [
-                                                    Text(
-                                                      "YOUR ORDER HAS BEEN PLACED",
-                                                      style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: Colors.black,
+                                      if (orderFormKey.currentState!
+                                          .validate()) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        247, 232, 178, 52),
+                                                content: SingleChildScrollView(
+                                                  child: Column(
+                                                    children: [
+                                                      const SizedBox(
+                                                        height: 250,
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      "Please wait for your order and please prepare for your payment with the total amount of [Total amount to pay]",
-                                                      style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black,
+                                                      const Text(
+                                                        "YOUR ORDER HAS BEEN PLACED",
+                                                        style: TextStyle(
+                                                            fontSize: 23,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
-                                                      textAlign:
-                                                          TextAlign.justify,
-                                                    )
-                                                  ],
-                                                ),
-                                              )));
-                                      setState(() {
-                                        productValue = productList.first;
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        "Please wait for your order and prepare for your payment with the total amount of ₱$totalAmount",
+                                                        style: const TextStyle(
+                                                            fontSize: 21,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 250,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )));
+                                        setState(() {
+                                          productValue = productList.first;
+                                          qtyController.clear();
+                                        });
+                                        sendEmailMessage(
+                                            int.parse(tableNoController.text),
+                                            orderList.join("<br>").toString(),
+                                            totalAmount);
+                                        orderList.clear();
+                                        totalAmount = 0.0;
+                                        tableNoController.clear();
+                                        paymentController.clear();
                                         qtyController.clear();
-                                      });
+                                      }
                                     },
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(
