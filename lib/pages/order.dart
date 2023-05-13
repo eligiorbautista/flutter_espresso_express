@@ -134,7 +134,7 @@ class _OrderPageState extends State<OrderPage> {
                               ),
                               TextFormField(
                                 validator: (value) {
-                                  if (value == null || value!.isEmpty) {
+                                  if (value == null || value.isEmpty) {
                                     return "*Required";
                                   }
                                   return null;
