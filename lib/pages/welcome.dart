@@ -43,8 +43,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   Container(
                     padding: const EdgeInsets.all(5),
-                    width: 400,
-                    height: 50,
+                    width: 260,
+                    height: 60,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -60,7 +60,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: const Text(
                         "Let's get caffeinated!",
                         style: TextStyle(
-                            fontSize: 18, fontStyle: FontStyle.italic),
+                            fontSize: 20, fontStyle: FontStyle.italic),
                       ),
                     ),
                   ),
