@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.espresso_express">
    <application
-        android:label="espresso_express"
+        android:label="EspressoExpress"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
