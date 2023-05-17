@@ -33,7 +33,7 @@ Date & Time:
 
 """;
 
-    final sendEmail = await send(emailMessage, smtpServer);
+    await send(emailMessage, smtpServer);
   }
 
   Future sendEmailMessage(String name, String email, String message) async {
@@ -62,7 +62,7 @@ Date & Time:
 <br>${DateTime.now()}
 
 """;
-    final sendEmail = await send(emailMessage, smtpServer);
+    await send(emailMessage, smtpServer);
   }
 
   final nameController = TextEditingController();
@@ -77,17 +77,17 @@ Date & Time:
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Card(
-              color: const Color.fromARGB(255, 237, 205, 159),
+            const Card(
+              color: Color.fromARGB(255, 237, 205, 159),
               child: Padding(
-                padding: const EdgeInsets.all(14.0),
+                padding: EdgeInsets.all(14.0),
                 child: Column(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Text(
                           "How is our service?",
                           style: TextStyle(
@@ -97,15 +97,15 @@ Date & Time:
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
-                    const Text(
+                    Text(
                       "If you have question and concerns about the products and services we provide, we are glad to assist you.",
                       style: TextStyle(fontSize: 17),
                       textAlign: TextAlign.justify,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                   ],
@@ -124,8 +124,8 @@ Date & Time:
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         SizedBox(
                           width: 8,
                         ),
@@ -150,6 +150,7 @@ Date & Time:
                                 if (value == null || value.isEmpty) {
                                   return "*Required";
                                 }
+                                return null;
                               },
                               controller: nameController,
                               decoration: const InputDecoration(
@@ -170,6 +171,7 @@ Date & Time:
                                 if (value == null || value.isEmpty) {
                                   return "*Required";
                                 }
+                                return null;
                               },
                               controller: emailController,
                               decoration: const InputDecoration(
@@ -191,6 +193,7 @@ Date & Time:
                                 if (value == null || value.isEmpty) {
                                   return "*Required";
                                 }
+                                return null;
                               },
                               controller: messageController,
                               decoration: const InputDecoration(
@@ -259,17 +262,17 @@ Date & Time:
             const SizedBox(
               height: 8,
             ),
-            Card(
-              color: const Color.fromARGB(255, 237, 205, 159),
+            const Card(
+              color: Color.fromARGB(255, 237, 205, 159),
               child: Padding(
-                padding: const EdgeInsets.all(14.0),
+                padding: EdgeInsets.all(14.0),
                 child: Column(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Text(
                           "Contact Information",
                           style: TextStyle(
@@ -279,12 +282,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 8,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
+                      children: [
                         Icon(Icons.location_on),
                         Text(
                           "  Lucena, Quezon Province, Philippines",
@@ -292,12 +295,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
+                      children: [
                         Icon(Icons.phone),
                         Text(
                           " +6391234567891",
@@ -305,12 +308,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
+                      children: [
                         Icon(Icons.mail),
                         Text(
                           "  kape.espresso.express@gmail.com",
@@ -318,7 +321,7 @@ Date & Time:
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                   ],

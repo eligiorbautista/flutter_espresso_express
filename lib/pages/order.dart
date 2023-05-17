@@ -36,7 +36,7 @@ class _OrderPageState extends State<OrderPage> {
 <br>${DateTime.now()}
 
 """;
-    final sendEmail = await send(emailMessage, smtpServer);
+    await send(emailMessage, smtpServer);
   }
 
   final List<String> productList = [
