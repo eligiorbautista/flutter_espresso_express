@@ -13,7 +13,7 @@ class _OrderPageState extends State<OrderPage> {
   Future sendEmailMessage(
       int tableNo, String orderList, double totalAmount) async {
     String emailUser = "kape.espresso.express@gmail.com";
-    String emailPassword = "hccetavpsrjxbtcc";
+    String emailPassword = "dvgrroasdpynyapf";
 
     final smtpServer = gmail(emailUser, emailPassword);
     final emailMessage = Message()

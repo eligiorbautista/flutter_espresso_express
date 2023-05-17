@@ -13,7 +13,7 @@ class _ContactPageState extends State<ContactPage> {
   Future sendAutomatedResponse(
       String name, String email, String message) async {
     String emailUser = "kape.espresso.express@gmail.com";
-    String emailPassword = "hccetavpsrjxbtcc";
+    String emailPassword = "dvgrroasdpynyapf";
 
     final smtpServer = gmail(emailUser, emailPassword);
     final emailMessage = Message()
@@ -38,7 +38,7 @@ Date & Time:
 
   Future sendEmailMessage(String name, String email, String message) async {
     String emailUser = "kape.espresso.express@gmail.com";
-    String emailPassword = "hccetavpsrjxbtcc";
+    String emailPassword = "dvgrroasdpynyapf";
 
     final smtpServer = gmail(emailUser, emailPassword);
     final emailMessage = Message()
