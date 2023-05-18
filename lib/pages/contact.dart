@@ -77,17 +77,17 @@ Date & Time:
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Card(
-              color: Color.fromARGB(255, 237, 205, 159),
+            Card(
+              color: const Color.fromARGB(255, 237, 205, 159),
               child: Padding(
-                padding: EdgeInsets.all(14.0),
+                padding: const EdgeInsets.all(14.0),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "How is our service?",
                           style: TextStyle(
@@ -97,15 +97,15 @@ Date & Time:
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text(
+                    const Text(
                       "If you have question and concerns about the products and services we provide, we are glad to assist you.",
                       style: TextStyle(fontSize: 17),
                       textAlign: TextAlign.justify,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
@@ -124,8 +124,8 @@ Date & Time:
                     const SizedBox(
                       height: 10,
                     ),
-                    const Row(
-                      children: [
+                    Row(
+                      children: const [
                         SizedBox(
                           width: 8,
                         ),
@@ -262,17 +262,17 @@ Date & Time:
             const SizedBox(
               height: 8,
             ),
-            const Card(
+            Card(
               color: Color.fromARGB(255, 237, 205, 159),
               child: Padding(
                 padding: EdgeInsets.all(14.0),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Contact Information",
                           style: TextStyle(
@@ -282,12 +282,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Icon(Icons.location_on),
                         Text(
                           "  Lucena, Quezon Province, Philippines",
@@ -295,12 +295,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Icon(Icons.phone),
                         Text(
                           " +6391234567891",
@@ -308,12 +308,12 @@ Date & Time:
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Icon(Icons.mail),
                         Text(
                           "  kape.espresso.express@gmail.com",
@@ -321,7 +321,7 @@ Date & Time:
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
