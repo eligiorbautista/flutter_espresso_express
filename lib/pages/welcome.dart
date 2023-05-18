@@ -67,30 +67,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    width: 400,
-                    height: 50,
-                    // child: ElevatedButton(
-                    //   onPressed: () {
-                    //     Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             builder: (context) => const MainNavigation()));
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: const Color.fromARGB(255, 121, 61, 5),
-                    //     shadowColor: Colors.black,
-                    //     elevation: 5,
-                    //   ),
-                    //   child: const Text(
-                    //     "Continue as admin",
-                    //     style: TextStyle(
-                    //       fontSize: 18,
-                    //     ),
-                    //   ),
-                    // ),
-                  )
                 ]),
           ]),
     );
