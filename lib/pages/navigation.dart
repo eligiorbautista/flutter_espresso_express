@@ -32,17 +32,22 @@ class _MainRootPageState extends State<MainRootPage> {
         builder: (context) {
           return AlertDialog(
             title: const Text("About"),
-            content: const SingleChildScrollView(
-                child: Flexible(
-              child: Text(
-                """Welcome to ExpressoExpress!
-
+            content: const SizedBox(
+              height: 250,
+              child: Column(
+                children: [
+                  Flexible(
+                    child: Text(
+                      """Welcome to ExpressoExpress!
 We are thrilled to serve you delicious and tasty coffee with warm and inviting atmosphere. Our main goal is to create space for people to connect and relax and also enjoy a great cup of coffee.
-
+            
 We believe that great coffee starts with high-quality beans and expert brewing techniques. That's why we source our coffee from the best roasters and take care to brew it to perfection every time. Whether you prefer a classic latte or a bold espresso, we've got you covered.""",
-                textAlign: TextAlign.justify,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
               ),
-            )),
+            ),
             actions: [
               ElevatedButton(
                   onPressed: () {
