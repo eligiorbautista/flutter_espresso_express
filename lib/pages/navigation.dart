@@ -32,10 +32,10 @@ class _MainRootPageState extends State<MainRootPage> {
         builder: (context) {
           return AlertDialog(
             title: const Text("About"),
-            content: const SizedBox(
+            content: SizedBox(
               height: 250,
               child: Column(
-                children: [
+                children: const [
                   Flexible(
                     child: Text(
                       """Welcome to ExpressoExpress!
